@@ -1,0 +1,77 @@
+h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #333;
+    min-width: 500px;
+    width: 60%;
+    margin: auto;
+}
+
+form {
+    min-width: 500px;
+    width: 60%;
+    height: 640px;
+    margin: 30px auto;
+    display: grid;
+    grid-auto-rows: 42px;
+    background-color: #eef;
+    align-items: end;
+    grid-gap: 10px;
+    border-radius: 28px;
+    box-shadow: 1px 1px 1px 2px #333;
+}
+
+form label {
+    margin-left: 40px;
+    font-size: 18px;
+}
+
+input,select, option {
+    width: 150px;
+    height: 24px;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #aaf;
+    font-size: 16px;
+    background-color: #fff;
+}
+select{
+    height: 28px;
+}
+select[name=graduate_at]{
+    width: 200px;
+}
+input,
+select {
+    margin-left: 12px;
+}
+
+input[name=addr] {
+    width: 320px;
+}
+
+input[type=submit] {
+    width: 90px;
+    height: 32px;
+    color: #8600FF;
+    justify-self: center;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 0.2rem solid #BEBECC;
+    background: linear-gradient(#eef, #BEBECC);
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    color: #8600FF;
+    font-weight: bold;
+    background: linear-gradient(#BEBECC, #eef);
+}
+
+input[type="submit"]:active {
+    box-shadow: -1px -1px 1px 1px #666;
+    box-sizing: border-box;
+}

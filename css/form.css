@@ -51,27 +51,61 @@ select {
 input[name=addr] {
     width: 320px;
 }
-
-input[type=submit] {
+.back{
+    display: block;
+    color:#00f;
+    text-decoration: none;
     width: 90px;
     height: 32px;
+    border: 0.2rem solid #aaf;
+    background: linear-gradient(#eef, #aaf);
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 36px;
+    margin:10px auto;
+}
+.back:hover{
+    color: #00F;
+    font-weight: bold;
+    background: linear-gradient(#aaf, #eef);
+}
+.back:active{
+    box-shadow: -1px -1px 1px 1px #33a;
+}
+input[type=submit]{
+    width: 90px;
+    height: 40px;
     color: #8600FF;
     justify-self: center;
-    margin-top: 10px;
+    margin: auto;
     cursor: pointer;
     border: 0.2rem solid #BEBECC;
     background: linear-gradient(#eef, #BEBECC);
     font-size: 16px;
     border-radius: 5px;
+    text-align: center;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover{
     color: #8600FF;
     font-weight: bold;
     background: linear-gradient(#BEBECC, #eef);
 }
 
-input[type="submit"]:active {
+input[type="submit"]:active{
     box-shadow: -1px -1px 1px 1px #666;
-    box-sizing: border-box;
+}
+.edit{
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+    margin: auto;
+    color: #00f;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+}
+.edit_err{
+    color: #f00;
 }

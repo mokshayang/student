@@ -1,4 +1,56 @@
 <?php include_once("connect.php");
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+$id=$_POST['id'];
+//建立變數接收表單傳送過來的資料
+$name =$_POST['name'];
+$birthday =$_POST['birthday'];
+$uni_id =$_POST['uni_id'];
+$addr =$_POST['addr'];
+$parents =$_POST['parents'];
+$tel =$_POST['tel'];
+$dept =$_POST['dept'];
+$graduate_at =$_POST['graduate_at'];
+$status_code =$_POST['status_code'];
+$sql_students="UPDATE `students` 
+            SET `name`='$name',
+                `birthday`='$birthday',
+                `uni_id`='$uni_id',
+                `addr`='$addr',
+                `parents`='$parents',
+                `tel`='$tel',
+                `dept`='$dept',
+                `graduate_at`='$graduate_at',
+                `status_code`='$status_code'               
+                WHERE `id`='$id'";
+//$id=$_POST['id']從add.php >>> edit.php(建立隱藏欄位) >>> this(edit_student.php)
 
+//相關連動的資料表為 `class_student`
+//相關欄位
+//school_num  學號不做修改 ~~
+//class_code  想辦法生出來
+//stat_num    考慮到座號重複問題太複雜，先不做修改
+//year        固定為2000，不要需修改
+//$_POST['class_code']from `classes`
 
+//學員所屬班級在另一張資料class_student
+$class_code =$_POST['class_code'];
+//建立相關表格------------------------------------------------
+$school_num=$pdo->query("SELECT * FROM `students` WHERE `id`='$id'")
+            ->fetch(PDO::FETCH_ASSOC);
+//$id=$_POST['id']從 add.php >>> edit.php(建立隱藏欄位) >>> this(edit_student.php)
+
+$class= $pdo->query("SELECT * FROM `class_student` WHERE `school_num`='{$school_num['school_num']}'")
+            ->fetch(PDO::FETCH_ASSOC);
+//相關表格建立完成--------------------------------------------
+
+$sql_class_student="UPDATE `class_student` SET `class_code`='$class_code' WHERE `id`='{$class['id']}'";
+echo $sql_students;
+echo "<br>";
+echo $sql_class_student;
+echo "<br>";
+$res1=$pdo->exec($sql_students);
+$res2=$pdo->exec($sql_class_student);
+echo "編輯成功 !!";
 ?>

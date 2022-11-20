@@ -14,18 +14,24 @@ $dept = $_POST['dept'];
 $graduate_at = $_POST['graduate_at'];
 $status_code = $_POST['status_code'];
 
-//學員所屬班級在另一張資料class_student(才能與`students`相連)
-$class_code = $_POST['class_code']; //來自form.`classes`.`id`
-//預設年度都是2000年
-$year = 2000;
+//相關的資料表 `class_student`裡的 
+//school_num, class_code, seat_num， year 
+//也都要變動，所以要找出來，並且更新!!
+
+//來自form.`classes`.`id`
+$class_code = $_POST['class_code']; 
 
 //透過SQL語法從class_student資料表中找出某班級的最大座號並加1做為新增的學生的座號
-//先找出最大班級座號(`class_student`.`seat_num`) $class_code=`class_st`
+//先找出最大班級座號(`class_student`.`seat_num`) 
 $sql_num = "SELECT max(`seat_num`) FROM `class_student` WHERE `class_code`='$class_code'";
 $max_num = $pdo->query($sql_num)->fetchColumn();
 //最大座號並加1做為新增的學生的座號
 $seat_num = $max_num + 1;
+
+//預設年度都是2000年
+$year = 2000;
 //echo $seat_num;
+
 //建立新增學生資料到students資料表的語法並帶入相關的變數
 //標單接收的in `students`
 $sql = "INSERT INTO `students` 

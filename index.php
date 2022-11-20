@@ -88,7 +88,7 @@ include_once("api/connect.php");
                 echo    "<div>{$row['graduate_at']}</div>";
                 echo    "<div>{$age}</div>";
                 echo    "<div class='operate'>";
-                echo        "<a href=edit.php?id={$row['id']}>編輯</a>";
+                echo        "<a href=edit.php?id={$row['id']}>修改</a>";
                 echo        $url;
                 echo    "</div>";
                 echo "</div>";

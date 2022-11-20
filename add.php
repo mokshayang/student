@@ -34,7 +34,7 @@
                 echo "</pre>"; 
             */
     ?>
-    <form action="api/edit_student.php" method="post">
+    <form action="api/add_student.php" method="post">
         <label>
             <!--將最大的學號+1後做為要新增的下一位學生的學號-->
             <div>學　　號 :　<?= $max + 1 ?></div>
@@ -67,7 +67,6 @@
                 foreach($depts as $dept){
                     echo "<option value='{$dept['id']}'>{$dept['name']}</option>";
                 }
-
                 ?>
             </select>
         </label>
@@ -80,7 +79,6 @@
                 foreach($grads as $grad){
                     echo "<option value='{$grad['id']}'>{$grad['county']}{$grad['name']}</option>";
                 }
-
                 ?>
             </select>
         </label>
@@ -93,7 +91,6 @@
                 foreach($rows as $row){
                     echo "<option value='{$row['code']}'>{$row['status']}</option>";
                 }
-
                 ?>
             </select>
         </label>
@@ -106,11 +103,9 @@
                 foreach($rows as $row){
                     echo "<option value='{$row['code']}'>{$row['name']}</option>";
                 }
-
                 ?>
             </select>
         </label>
-
         <input type="submit" value="確認新增">
     </form>
 </body>

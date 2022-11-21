@@ -18,7 +18,51 @@ include_once("api/connect.php");
     <link rel="stylesheet" href="css/style.css">
     <title>學生管理系統</title>
     <style>
+        .pages {
+            text-align: center;
+        }
 
+        .pages {
+            font-size: 20px;
+            font-weight: bolder;
+            margin: 1rem auto;
+            display: flex;
+            justify-content: space-between;
+            width: 68%;
+        }
+
+        .pages a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 5px #ccc;
+            text-align: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            margin: 0 2px;
+            color: #00f;
+        }
+        .pages div{
+           padding: 0 12px;
+            height: 34px;
+            line-height: 36px;
+            text-align: center;
+        }
+
+        .pages a.noshow {
+            border: 0px solid #eee;
+            box-shadow: initial;
+        }
+
+        a.now {
+            color: #000;
+            font-weight: 800;
+            border:none;
+            box-shadow:none;
+        }
     </style>
 </head>
 
@@ -69,16 +113,13 @@ include_once("api/connect.php");
             $pages = ceil($total / $div); //總頁數;
             $now = (isset($_GET['page'])) ? $_GET['page'] : 1; //當前頁數
             $star = ($now - 1) * $div; //dbDate為0開始 開始撈的比數
-
             $sql = $sql . "LIMIT $star,$div";
-
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        
             foreach ($rows as $row) {
-                if(isset($_GET['code'])){
-                    $url="<a href=api/del_student.php?id={$row['id']}&page={$now}&code={$_GET['code']} onclick=\"return del()\">刪除</a>";
-                }else{
-                    $url="<a href=api/del_student.php?id={$row['id']}&page={$now} onclick=\"return del()\">刪除</a>";
+                if (isset($_GET['code'])) {
+                    $url = "<a href=api/del_student.php?id={$row['id']}&page={$now}&code={$_GET['code']} onclick=\"return del()\">刪除</a>";
+                } else {
+                    $url = "<a href=api/del_student.php?id={$row['id']}&page={$now} onclick=\"return del()\">刪除</a>";
                 }
                 $age = round((strtotime('now') - strtotime($row['birthday'])) / (60 * 60 * 24 * 365), 1);
                 echo "<div class='studentDate'>";
@@ -93,91 +134,182 @@ include_once("api/connect.php");
                 echo    "</div>";
                 echo "</div>";
             }
-            echo "</div>";
-
-
             //$now  當前頁面;
             //$pages 總頁數;
-            $showPage = 5; //要秀出分頁數量;
-            //isset ( class_student`.`class_code`='{$_GET['code']}' )
-            //以班級為單位的分頁預覽，因為$_GET['code']存在，這邊的$pages會以班級為單位
-            if (isset($_GET['code'])) {
-                echo "<div class='pages'>";
-                echo "<div></div>";
-                for ($i = 1; $i <= $pages; $i++) {
-                    if ($i == $now) {
-                        echo "<div> ";
-                        echo $i;
-                        echo "</div>";
-                    } else {
-                        echo "<a href='?page=$i&code={$_GET['code']}'> ";
-                        echo $i;
-                        echo " </a>";
-                    }
-                }
-                echo "</div>";
-            }
-            echo "</div>";
-            //!!!isset ( class_student`.`class_code`='{$_GET['code']}' )
-            //全體學生的分頁預覽
-            echo "<div class='pages'>";
+            ?>
+        </div>
+        <div class='pages'>
+
+            <?php
+            //首頁
+            
             if (!isset($_GET['code'])) {
                 if ($now == 1) {
-                    echo "<div >";
+                    echo "<div class='now'>";
                     echo "首頁";
                     echo "</div>";
                 } else {
                     echo "<a href=?page=1 class='fe'>首頁</a>";
                 }
-                if ($now <= ceil($showPage / 2)) {
-                    for ($i = 1; $i <= $showPage; $i++) {
-                        if ($i == $now) {
-                            echo "<div class='selectA'>";
-                            echo $i;
-                            echo "</div>";
-                        } else {
-                            echo "<a href='?page=$i'>";
-                            echo $i;
-                            echo "</a>";
-                        }
+            }else{
+                if ($now == 1) {
+                    echo "<div class='now'>";
+                    echo "首頁";
+                    echo "</div>";
+                } else {
+                    echo "<a href=?page=1&code={$_GET['code']} class='fe'>首頁</a>";
+                }
+            }
+            ?>
+            <div>
+                <?php
+                //上一頁
+                //當前頁碼-1,可是不能小於0,最小是1,如果是0,不顯示
+                $prev = $now - 1;
+                if ($now - 1 >= 1) {
+                    if (isset($_GET['code'])) {
+                        echo "<a href='?page=$prev&code={$_GET['code']}'>";
+                        echo "&lt;";
+                        echo "</a>";
+                    } else {
+                        echo "<a href='?page=$prev'>";
+                        echo "&lt;";
+                        echo "</a>";
+                    }
+                } else {
+                    echo "<a class='noshow'>&nbsp;</a>";
+                }
+                ?>
+                <?php
+                //顯示第一頁
+                // if ($now >= 4) {
+                //     if (isset($_GET['code'])) {
+                //         echo "<a href='?page=1&code={$_GET['code']}'> ";
+                //         echo "1 ";
+                //         echo " </a>...";
+                //     } else {
+                //         echo "<a href='?page=1'> ";
+                //         echo "1 ";
+                //         echo " </a>...";
+                //     }
+                // }
+                ?>
+                <?php
+                //頁碼區
+                //只顯示前後四個頁碼
+                if(!isset($_GET['code'])){
+                if ($now >= 3 && $now <= ($pages - 2)) {  //判斷頁碼在>=3 及小於最後兩頁的狀況
+                    $startPage = $now - 2;
+                } else if ($now - 2 < 3) { //判斷頁碼在1,2頁的狀況
+                    $startPage = 1;
+                } else {  //判斷頁碼在最後兩頁的狀況
+                    $startPage = $pages - 4;
+                }
+                }else{
+                    $startPage = 1;
+                }
+                if(!isset($_GET['code'])){
+                for ($i = $startPage; $i <= ($startPage + 4); $i++) {
+                    $nowPage = ($i == $now) ? 'now' : '';
+                    if (isset($_GET['code'])) {
+                        echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
+                    } else {
+                        echo "<a href='?page=$i' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
                     }
                 }
-                if (($now > ceil($showPage / 2)) && ($now < ($pages - ceil($showPage / 2)))) {
-                    for ($i = $now - (ceil($showPage / 2) - 1); $i < $now + ceil($showPage / 2); $i++) {
-                        if ($i == $now) {
-                            echo "<div >";
-                            echo $i;
-                            echo "</div>";
-                        } else {
-                            echo "<a href='?page=$i'>";
-                            echo $i;
-                            echo "</a>";
-                        }
+            }else{
+                for ($i = $startPage; $i <= $pages; $i++) {
+                    $nowPage = ($i == $now) ? 'now' : '';
+                    if (isset($_GET['code'])) {
+                        echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
+                    } else {
+                        echo "<a href='?page=$i' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
                     }
                 }
-                if ($now >= ($pages - ceil($showPage / 2))) {
-                    for ($i = ($pages - $showPage + 1); $i <= $pages; $i++) {
-                        if ($i == $now) {
-                            echo "<div >";
-                            echo $i;
-                            echo "</div>";
-                        } else {
-                            echo "<a href='?page=$i'>";
-                            echo $i;
-                            echo "</a>";
-                        }
+            }
+                //全部頁碼顯示
+                /*
+                for ($i = 1; $i <= $pages; $i++) {
+                    $nowPage = ($i == $now) ? 'now' : '';
+                    if (isset($_GET['code'])) {
+                        echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
+                    } else {
+
+                        echo "<a href='?page=$i' class='$nowPage'> ";
+                        echo $i;
+                        echo " </a>";
                     }
                 }
+                */
+                ?>
+                <?php
+                //顯示第最後一頁 
+                // if ($now <= ($pages - 3)) {
+                //     if (isset($_GET['code'])) {
+                //         echo "...<a href='?page=$pages&code={$_GET['code']}'> ";
+                //         echo "$pages";
+                //         echo " </a>";
+                //     } else {
+                //         echo "...<a href='?page=$pages'> ";
+                //         echo "$pages";
+                //         echo " </a>";
+                //     }
+                // }
+                ?>
+                <?php
+                //下一頁
+                //當前頁碼+1,可是不能超過總頁數,最大是總頁數,如果超過總頁數,不顯示
+                if (($now + 1) <= $pages) {
+                    $next = $now + 1;
+                    if (isset($_GET['code'])) {
+                        echo "<a href='?page=$next&code={$_GET['code']}'> ";
+                        echo "&gt; ";
+                        echo " </a>";
+                    } else {
+                        echo "<a href='?page=$next'> ";
+                        echo "&gt; ";
+                        echo " </a>";
+                    }
+                } else {
+                    echo "<a class='noshow'>&nbsp;</a>";
+                }
+                
+                ?>
+            </div>
+            <?php
+            //末頁
+            if (!isset($_GET['code'])) {
                 if ($now == $pages) {
-                    echo "<div >";
+                    echo "<div class='now'>";
                     echo "末頁";
                     echo "</div>";
                 } else {
-                    echo "<a href=?page=" . $pages . " class='fe'>末頁</a>";
+                    echo "<a href=?page=$pages class='fe'>末頁</a>";
+                }
+            }else{
+                if ($now == $pages) {
+                    echo "<div class='now'>";
+                    echo "末頁";
+                    echo "</div>";
+                } else {
+                    echo "<a href=?page=$pages&code={$_GET['code']} class='fe'>末頁</a>";
                 }
             }
-            echo "</div>";
             ?>
+        </div>
+        <?php
+        
+        ?>
             <!-- 班級 GET code -->
             <!-- $_GET['code'] 來自 `classes`.`code` -->
             <div class="classes">
@@ -198,52 +330,52 @@ include_once("api/connect.php");
                 }
                 ?>
             </div>
-            <style>
-                .totalSat a {
-                    display: block;
-                    width: 200px;
-                    height: 40px;
-                    font-size: 24px;
-                    margin: 10px auto;
-                    text-align: center;
-                    line-height: 40px;
-                    border-radius: 10px;
-                    text-decoration: none;
-                    background-color: #aaf;
-                    color: #333;
-                    font-weight: bold;
-                }
+        <style>
+            .totalSat a {
+                display: block;
+                width: 200px;
+                height: 40px;
+                font-size: 24px;
+                margin: 10px auto;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 10px;
+                text-decoration: none;
+                background-color: #aaf;
+                color: #333;
+                font-weight: bold;
+            }
 
-                .totalSat a:hover {
-                    background-color: #00e;
-                    color: #eee;
-                }
-            </style>
-            <!-- 全體學生按鈕 -->
-            <?php
-            if (isset($_GET['page']) && !isset($_GET['code'])) {
-            ?>
-                <div class="totalSat"><a href="<?= '?page=1' ?>" style='background-color: #00e;color: #eee;'>全體學生</a></div>
-            <?php } else {; ?>
-                <div class="totalSat"><a href="<?= '?page=1' ?>">全體學生</a></div>
-            <?php }; ?>
-            <!-- ------------------------------ -->
-            <script>
-                function del() {
-                    if (confirm("確定刪除嗎 ? ")) {
-                        if(prompt("請輸入 DELETE","DELETE")=="DELETE") {
-                            alert("刪除成功");
-                            return true;
-                        }else{
-                            alert("動作錯誤，取消刪除 !")
-                            return false;
-                        }
+            .totalSat a:hover {
+                background-color: #00e;
+                color: #eee;
+            }
+        </style>
+        <!-- 全體學生按鈕 -->
+        <?php
+        if (isset($_GET['page']) && !isset($_GET['code'])) {
+        ?>
+            <div class="totalSat"><a href="<?= '?page=1' ?>" style='background-color: #00e;color: #eee;'>全體學生</a></div>
+        <?php } else {; ?>
+            <div class="totalSat"><a href="<?= '?page=1' ?>">全體學生</a></div>
+        <?php }; ?>
+        <!-- ------------------------------ -->
+        <script>
+            function del() {
+                if (confirm("確定刪除嗎 ? ")) {
+                    if (prompt("請輸入 DELETE", "DELETE") == "DELETE") {
+                        alert("刪除成功");
+                        return true;
                     } else {
-                        alert("取消刪除動作");
+                        alert("動作錯誤，取消刪除 !")
                         return false;
                     }
+                } else {
+                    alert("取消刪除動作");
+                    return false;
                 }
-            </script>
+            }
+        </script>
 </body>
 
 </html>

@@ -80,9 +80,11 @@ if(isset($_GET['del'])){
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
                 if (isset($_GET['code'])) {
-                    $url = "<a href=api/del_student.php?id={$row['id']}&page={$now}&code={$_GET['code']} onclick=\"return del()\">刪除</a>";
+                    $url_del = "<a href=api/del_student.php?id={$row['id']}&page={$now}&code={$_GET['code']} onclick=\"return del()\">刪除</a>";
+                    $url_amend="<a href=edit.php?id={$row['id']}&page={$now}&code={$_GET['code']}>修改</a>";
                 } else {
-                    $url = "<a href=api/del_student.php?id={$row['id']}&page={$now} onclick=\"return del()\">刪除</a>";
+                    $url_del = "<a href=api/del_student.php?id={$row['id']}&page={$now} onclick=\"return del()\">刪除</a>";
+                    $url_amend="<a href=edit.php?id={$row['id']}&page={$now}>修改</a>";
                 }
                 $age = round((strtotime('now') - strtotime($row['birthday'])) / (60 * 60 * 24 * 365), 1);
                 echo "<div class='studentDate'>";
@@ -92,8 +94,8 @@ if(isset($_GET['del'])){
                 echo    "<div>{$row['graduate_at']}</div>";
                 echo    "<div>{$age}</div>";
                 echo    "<div class='operate'>";
-                echo        "<a href=edit.php?id={$row['id']}>修改</a>";
-                echo        $url;
+                echo        $url_amend;
+                echo        $url_del;
                 echo    "</div>";
                 echo "</div>";
             }

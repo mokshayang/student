@@ -115,6 +115,9 @@
         <input type="hidden" name="id" value="<?= $student['id'] ?>">
         <input type="submit" value="確認修改">
     </form>
+    <?php
+  
+    ?>
     <a href="index.php?page=1" class="back">回列表</a>
     <?php
     if (isset($_GET['edit'])) {

@@ -9,9 +9,9 @@
     $res_class=$pdo->exec($sql_class);
 
     if(isset($_GET['code'])){
-        $url="location:../index.php?page={$_GET['page']}&code={$_GET['code']}";
+        $url="location:../index.php?page={$_GET['page']}&code={$_GET['code']}&del=已成功刪除學生{$student['name']}的所有資料！！";
     }else{
-        $url="location:../index.php?page={$_GET['page']}";
+        $url="location:../index.php?page={$_GET['page']}&del=已成功刪除學生{$student['name']}的所有資料！！";
     }
 header($url);
 ?>

@@ -18,51 +18,7 @@ include_once("api/connect.php");
     <link rel="stylesheet" href="css/style.css">
     <title>學生管理系統</title>
     <style>
-        .pages {
-            text-align: center;
-        }
-
-        .pages {
-            font-size: 20px;
-            font-weight: bolder;
-            margin: 1rem auto;
-            display: flex;
-            justify-content: space-between;
-            width: 68%;
-        }
-
-        .pages a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            border: 1px solid #ccc;
-            box-shadow: 1px 1px 5px #ccc;
-            text-align: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            margin: 0 2px;
-            color: #00f;
-        }
-        .pages div{
-           padding: 0 12px;
-            height: 34px;
-            line-height: 36px;
-            text-align: center;
-        }
-
-        .pages a.noshow {
-            border: 0px solid #eee;
-            box-shadow: initial;
-        }
-
-        a.now {
-            color: #000;
-            font-weight: 800;
-            border:none;
-            box-shadow:none;
-        }
+     
     </style>
 </head>
 
@@ -73,6 +29,13 @@ include_once("api/connect.php");
         <a href="reg.php">教師註冊</a>
         <a href="login.php">教師登入</a>
     </nav>
+    <?php 
+if(isset($_GET['del'])){
+    echo "<div class='del-msg'>";
+    echo $_GET['del'];
+    echo "</div>";
+}
+?>
     <div class="studentsList">
         <div class="item">
             <div>學號</div>

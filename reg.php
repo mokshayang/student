@@ -55,9 +55,9 @@
         }
 
         #check,
-        .checkpw {
+        #checkpw {
             position: relative;
-            right: -20px;
+            right: 32px;
         }
     </style>
 </head>

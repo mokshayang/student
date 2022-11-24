@@ -8,7 +8,7 @@ include_once("api/connect.php");
 // print_r($rows);
 // echo "</pre>";
 session_start();
-unset($_SESSION['login_try']);
+$_SESSION['login_try']=0;
 ?>
 <!DOCTYPE html>
 <html lang="en">

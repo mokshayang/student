@@ -9,8 +9,13 @@
     <link rel="stylesheet" href="css/form.css">
     <title>修改學生資料</title>
     <style>
-        form {
+           form{
+            justify-items: start;
+            min-width:520px;
             height: 680px;
+        }
+           form label{
+            margin-left: 40px;
         }
     </style>
 </head>
@@ -118,7 +123,7 @@
     <?php
   
     ?>
-    <a href="index.php?page=1" class="back">回列表</a>
+    <a href="admin_center.php?page=1" class="back">回列表</a>
     <?php
     if (isset($_GET['edit'])) {
         switch ($_GET['edit']) {

@@ -7,6 +7,8 @@ include_once("api/connect.php");
 // echo "<pre>";
 // print_r($rows);
 // echo "</pre>";
+session_start();
+unset($_SESSION['login_try']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +20,14 @@ include_once("api/connect.php");
     <link rel="stylesheet" href="css/style.css">
     <title>學生管理系統</title>
     <style>
-     
+        
     </style>
 </head>
 
 <body>
     <h1>學生管理系統</h1>
     <nav>
-        <a href="add.php">新增學生</a>
+       
         <a href="reg.php">教師註冊</a>
         <a href="login.php">教師登入</a>
     </nav>
@@ -45,7 +47,7 @@ if(isset($_GET['del'])){
             <div>生日</div>
             <div>畢業國中</div>
             <div>年齡</div>
-            <div>編輯</div>
+            <!-- <div>編輯</div> -->
         </div>
         <div class="students">
             <?php
@@ -118,10 +120,10 @@ if(isset($_GET['del'])){
                 echo    "<div>{$row['birthday']}</div>";
                 echo    "<div>{$row['graduate_at']}</div>";
                 echo    "<div>{$age}</div>";
-                echo    "<div class='operate'>";
-                echo        $url_amend;
-                echo        $url_del;
-                echo    "</div>";
+                //echo    "<div class='operate'>";
+                // echo        $url_amend;
+                // echo        $url_del;
+                //echo    "</div>";
                 echo "</div>";
             }
             //$now  當前頁面;

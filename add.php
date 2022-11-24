@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="css/form.css">
     <title>新增學生</title>
     <style>
-    
+        form{
+            justify-items: start;
+            min-width:520px;
+        }
+           form label{
+            margin-left: 40px;
+        }
     </style>
 </head>
 

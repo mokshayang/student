@@ -7,6 +7,11 @@ include_once("api/connect.php");
 // echo "<pre>";
 // print_r($rows);
 // echo "</pre>";
+session_start();
+if(!isset($_SESSION['login'])){
+    header("location:index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +23,29 @@ include_once("api/connect.php");
     <link rel="stylesheet" href="css/style.css">
     <title>學生管理系統</title>
     <style>
-     
+     nav{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        height: 36px;
+     }
+     nav div{
+        background-color: pink;
+        border-radius: 5px;
+        line-height: 36px;
+     }
+     .item , .studentDate{
+    display: grid;
+    grid-template-columns:  repeat(6,1fr);
+}
     </style>
 </head>
 
 <body>
     <h1>學生管理系統</h1>
     <nav>
+        <div><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
         <a href="add.php">新增學生</a>
-        <a href="reg.php">教師註冊</a>
-        <a href="login.php">教師登入</a>
+        <a href="logout.php">教師登出</a>
     </nav>
     <?php 
 if(isset($_GET['del'])){

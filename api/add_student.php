@@ -62,4 +62,4 @@ $sql_class = "INSERT INTO `class_student` (`school_num`, `class_code`, `seat_num
 $res1 = $pdo->exec($sql);
 $res2=$pdo->exec($sql_class);
 
-header("location:../index.php");
+header("location:../admin_center.php");

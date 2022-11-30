@@ -28,8 +28,8 @@ $_SESSION['login_try']=0;
     <h1>學生管理系統</h1>
     <nav>
        
-        <a href="reg.php">教師註冊</a>
-        <a href="login.php">教師登入</a>
+        <a href="front/reg.php">教師註冊</a>
+        <a href="front/login.php">教師登入</a>
     </nav>
     <?php 
 if(isset($_GET['del'])){

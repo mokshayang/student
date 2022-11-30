@@ -1,5 +1,5 @@
 <?php
-include_once("api/connect.php");
+include_once("db/connect.php");
 // $sql = "SELECT * FROM `students`";
 // $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 //new PDO('mysql:host=localhost;charset=utf8;dbname=school','root(帳號)','(密碼)')->query("SELECT *    FROM `students` LIMIT 18")為已連線資料庫
@@ -7,7 +7,6 @@ include_once("api/connect.php");
 // echo "<pre>";
 // print_r($rows);
 // echo "</pre>";
-session_start();
 $_SESSION['login_try']=0;
 ?>
 <!DOCTYPE html>

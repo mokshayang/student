@@ -24,12 +24,14 @@ $_SESSION['login_try']=0;
 </head>
 
 <body>
+<?php include_once "layouts/header.php" ?>
     <h1>學生管理系統</h1>
-    <nav>
+    <!-- <nav>
        
         <a href="front/reg.php">教師註冊</a>
         <a href="front/login.php">教師登入</a>
-    </nav>
+    </nav> -->
+   
     <?php 
 if(isset($_GET['del'])){
     echo "<div class='del-msg'>";

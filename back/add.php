@@ -24,23 +24,25 @@
     <?php
     $sql = "SELECT max(`school_num`) FROM `students`";
     $max = $pdo->query($sql)->fetchColumn();
-            /*
+            
                 $rows=$pdo->query($sql)->fetchAll();
                 $row=$pdo->query($sql)->fetch();
-                echo "<pre>";
-                echo "<hr>";
-                echo "fetchColumn";
-                echo "<br>";
-                print_r($max);
-                echo "<hr>";
-                echo "fetchAll";
-                print_r($rows);
-                echo "<hr>";
-                echo "fetch";
-                print_r($row);
-                print_r($row);
-                echo "</pre>"; 
-            */
+                // echo "<pre>";
+                // echo "<hr>";
+                // echo "fetchColumn";
+                // echo "<br>";
+                // print_r($max);
+                // echo "<hr>";
+
+                // echo "fetchAll";
+                // print_r($rows);
+                // echo "<hr>";
+
+                // echo "fetch";
+                // print_r($row);
+                // print_r($row);
+                // echo "</pre>"; 
+            
     ?>
     <form action="api/add_student.php" method="post">
         <label>

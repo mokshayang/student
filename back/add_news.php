@@ -8,7 +8,7 @@
     </div>
     <div class="form-group row">
         <label class="col-form-label col-md-2 text-right">內容</label>
-        <textarea name="content" style="height:240px;" class="form-control col-md-10"></textarea>
+        <textarea name="content" style="height:400px;" class="form-control col-md-10"></textarea>
     </div>
     <div class="form-group row">
         <label class="col-form-label col-md-2 text-right">類別</label>

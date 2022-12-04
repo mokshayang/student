@@ -19,7 +19,8 @@
     .content{
         font-size: 20px;
         background-color: #eef;
-        padding:10px;
+        padding:20px 20px 40px;
+        border-radius: 10px;
     }
 </style>
 <?php

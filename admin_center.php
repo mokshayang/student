@@ -21,6 +21,7 @@ if (!isset($_SESSION['login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <?php include "./layouts/link_css.php" ?>
     <title>後臺管理系統</title>
     <style>
         nav {
@@ -59,6 +60,7 @@ if (!isset($_SESSION['login'])) {
         unset($_GET['del']);
     }
     ?>
+<?php include "./layouts/scripts.php";?>
 </body>
 
 </html>

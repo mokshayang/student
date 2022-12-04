@@ -3,7 +3,11 @@
 $news=$pdo->query("SELECT * FROM `news` WHERE `id`='{$_GET['id']}'")->fetch();
 
 ?>
-
+<style>
+    .serch{
+       justify-items: center;
+    }
+</style>
 <h2 class="text-center">編輯消息</h2>
 <main class="container">
 <form action="./api/news_edit.php" method="POST">
@@ -15,7 +19,7 @@ $news=$pdo->query("SELECT * FROM `news` WHERE `id`='{$_GET['id']}'")->fetch();
                value='<?=$news['subject'];?>'>
    </div>
    <div class="d-flex">
-    <div class="col-md-6 row">
+    <div class="col-md-6 row" class="serch">
         <span class="col-md-4 text-right mr-2">置頂</span>
         <div class="form-check mx-2 d-flex align-items-center">
             <input class="form-check-input" type="radio" name="top" value='1' <?=($news['top']==1)?'checked':'';?>>

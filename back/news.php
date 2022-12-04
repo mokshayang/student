@@ -19,6 +19,7 @@
     }
     .newAdd:hover{
         background-color: #33f;
+        color: #fff;
     }
     .list,
     .items {
@@ -43,6 +44,9 @@
     }
     .items{
         border-bottom: 1px solid #ccc;
+    }
+    .items:nth-child(2n){
+        background-color: #eef;
     }
  
     .items a{

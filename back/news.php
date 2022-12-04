@@ -2,6 +2,7 @@
     .newTool{
         width: 72%;
         margin: auto;
+        min-width: 640px;
     }
     .newAdd {
         display: block;

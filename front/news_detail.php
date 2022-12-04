@@ -26,7 +26,13 @@
 <?php
 
 $sql = "SELECT * FROM `news` WHERE `id`='{$_GET['id']}'";
+$sqlReaded=$pdo->query("SELECT `readed` FROM `news` WHERE `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);//查詢資料庫，當則新聞的點閱
+$addNew=$sqlReaded['readed']+1;//將點閱+1
+$countNew="UPDATE  `news` SET `readed` = '{$addNew}' WHERE `id`='{$_GET['id']}'";//更新點閱+1
+echo $sqlReaded['readed'] ;
 $news = $pdo->query($sql)->fetch();
+$readed=$pdo->query($countNew)->fetch();//送出點閱+1，並更新資料庫
+
 
 ?>
 <div class="total">

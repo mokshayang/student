@@ -10,8 +10,11 @@
         height: 60px;
         background-color: #fff;
         box-shadow: 1px 1px 10px #333;
-        
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        align-items: center;
     }
+    
 </style>
 <header class="shadow">
     <nav >
@@ -50,16 +53,18 @@
                     echo "";
                     break;
                 case "admin_center":
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
-                    echo "";
+                    echo "<div>";
+                    echo "<a href='admin_center.php'>回管理首頁</a>";
+                    echo "<a href='index.php'>回網站首頁</a>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<a href='admin_center.php?do=student_list'>學生管理</a>";
+                    echo "<a href='admin_center.php?do=news'>新聞管理</a>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<a href='?do=add'>新增學生</a>";
+                    echo "<a href='logout.php'>教師登出</a>";
+                    echo "</div>";
                     break;
             }
         ?>

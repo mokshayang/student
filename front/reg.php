@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>教師註冊</title>
     <style>
         form {
@@ -17,29 +17,23 @@
             height: 420px;
             justify-items: start;
         }
-
         form label {
             margin-left: 40px;
         }
-
         form div {
             margin-left: 100px;
         }
-
         .bot {
             width: 50%;
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
-
         .bot input {
             font-size: 18px;
         }
-
         input[type=email] {
             width: 280px;
         }
-
         #seepw,
         #seerpw {
             position: relative;
@@ -48,12 +42,10 @@
             cursor: pointer;
             font-size: 20px;
         }
-
         #pw,
         #repw {
             width: 160px;
         }
-
         #check,
         #checkpw {
             position: relative;

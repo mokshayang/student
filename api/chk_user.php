@@ -1,4 +1,4 @@
-<?php include_once("connect.php");
+<?php include_once("../db/connect.php");
 session_start();
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];

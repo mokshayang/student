@@ -17,6 +17,7 @@ $_SESSION['login_try'] = 0;//登入錯誤次數重整
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+   
     <title>學生管理系統</title>
     <style>
 
@@ -35,7 +36,6 @@ $_SESSION['login_try'] = 0;//登入錯誤次數重整
             include_once "./front/main.php";
         }
     ?>
-    <?php include_once "layouts/class_nav.php"; ?>   
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php include_once("connect.php");
+<?php include_once("../db/connect.php");
 echo "<pre>";
 print_r($_POST);
 echo "</pre>";
@@ -72,5 +72,6 @@ if($res1 || $res2){
     $edit='edit_fail';
 }
 echo $edit;
-header("location:../edit.php?id=$id&edit=$edit");
+header("location:../admin_center.php?do=edit&id=$id&edit=$edit");
+
 ?>

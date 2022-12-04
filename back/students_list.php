@@ -1,9 +1,8 @@
 <h1>學生管理系統</h1>
     <nav>
-        <div><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
-        <a href="add.php">新增學生</a>
-        <a href="logout.php">教師登出</a>
+    <div><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
     </nav>
+   
     <div class="studentsList">
         <div class="item">
             <div>學號</div>
@@ -60,7 +59,7 @@
                         alert('取消刪除動作');
                         return false;
                     }\">刪除</a>";
-                    $url_amend="<a href=edit.php?id={$row['id']}&page={$now}&code={$_GET['code']}>修改</a>";
+                    $url_amend="<a href=admin_center.php?do=edit&id={$row['id']}&page={$now}&code={$_GET['code']}>修改</a>";
                 } else {
                     $url_del = "<a href=api/del_student.php?id={$row['id']}&page={$now} onclick=\"if(confirm(`確定刪除 {$row['name']} 嗎 ?`)){
                         if (prompt(`請輸入 DELETE 以刪除 {$row['name']} `, 'DELETE') == 'DELETE') {
@@ -74,7 +73,7 @@
                         alert('取消刪除動作');
                         return false;
                     }\">刪除</a>";
-                    $url_amend="<a href=edit.php?id={$row['id']}&page={$now}>修改</a>";
+                    $url_amend="<a href=admin_center.php?do=edit&id={$row['id']}&page={$now}>修改</a>";
                 }
       
                 $age = round((strtotime('now') - strtotime($row['birthday'])) / (60 * 60 * 24 * 365), 1);
@@ -263,3 +262,4 @@
             }
             ?>
         </div>
+        <?php include_once "layouts/class_nav.php"; ?> 

@@ -1,4 +1,4 @@
-<?php include_once("api/connect.php"); ?>
+<?php include_once("db/connect.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,25 +49,25 @@
             <input type="hidden" name="school_num" value="<?= $max + 1 ?>">
         </label>
         <label>姓　　名 :
-            <input type="text" name="name">
+            <input type="text" name="name" required>
         </label>
         <label>生　　日 :
             <input type="date" name="birthday">
         </label>
         <label>身分證號 :
-            <input type="text" name="uni_id">
+            <input type="text" name="uni_id" required>
         </label>
         <label>住　　址 :
             <input type="text" name="addr">
         </label>
         <label>家長姓名 :
-            <input type="text" name="parents">
+            <input type="text" name="parents" required>
         </label>
         <label>連絡電話 :
-            <input type="text" name="tel">
+            <input type="text" name="tel" required>
         </label>
         <label>科　　別 :
-            <select name="dept">
+            <select name="dept" required>
                 <?php
                 //從`dept`資料表中撈出所有的科系資料並在網頁上製作成下拉選單的項目
                 $sql="SELECT * FROM `dept`";
@@ -116,6 +116,22 @@
         </label>
         <input type="submit" value="確認新增">
     </form>
+    <?php
+if(isset($_GET['status'])){
+    switch($_GET['status']){
+        case 'add_success' :
+            echo "<div>";
+            echo "新增成功";
+            echo "</div>";
+            break;
+        case 'add_fail' :
+            echo "<div>";
+            echo "新增失敗";
+            echo "</div>";
+            break;
+    }
+}
+?>
 </body>
 
 </html>

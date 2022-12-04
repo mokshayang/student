@@ -8,7 +8,7 @@ include_once("db/connect.php");
 // print_r($rows);
 // echo "</pre>";
 
-if(!isset($_SESSION['login'])){
+if (!isset($_SESSION['login'])) {
     header("location:index.php");
     exit();
 }
@@ -23,45 +23,42 @@ if(!isset($_SESSION['login'])){
     <link rel="stylesheet" href="css/style.css">
     <title>後臺管理系統</title>
     <style>
-     nav{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        height: 36px;
-     }
-     nav div{
-        background-color: pink;
-        border-radius: 5px;
-        line-height: 36px;
-     }
-     .item , .studentDate{
-    display: grid;
-    grid-template-columns:  repeat(6,1fr);
-}
+        nav {
+            display: grid;
+
+            height: 28px;
+        }
+
+        .item,
+        .studentDate {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+        }
     </style>
-    <?php 
-if(isset($_GET['del'])){
-    echo "<div class='del-msg'>";
-    echo $_GET['del'];
-    echo "</div>";
-    unset($_GET['del']);
-}
-?>
+
 </head>
 
 <body>
-<?php include_once "layouts/header.php" ?>
-    <?php //include_once "front/students_list.php" ?>
+    <?php include_once "layouts/header.php" ?>
+    <?php //include_once "front/students_list.php" 
+    ?>
     <?php
-        $do=$_GET['do']??'main';
-        $file="./back/".$do.".php";
-        if(file_exists($file)){
-            include_once $file;
-        }else{
-            include_once "./back/main.php";
-        }
-    ?>   
-      
-<?php include_once "layouts/class_nav.php"; ?> 
+    $do = $_GET['do'] ?? 'main';
+    $file = "./back/" . $do . ".php";
+    if (file_exists($file)) {
+        include_once $file;
+    } else {
+        include_once "./back/main.php";
+    }
+    ?>
+    <?php
+    if (isset($_GET['del'])) {
+        echo "<div class='del-msg'>";
+        echo $_GET['del'];
+        echo "</div>";
+        unset($_GET['del']);
+    }
+    ?>
 </body>
 
 </html>

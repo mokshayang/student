@@ -1,4 +1,4 @@
-<?php include_once("connect.php");
+<?php include_once("../db/connect.php");
 
 $acc=trim(strip_tags($_POST['acc']));
 $pw=trim($_POST['pw']);
@@ -16,5 +16,5 @@ echo "<br>";
 echo "email=>".$email;
 echo "<br>";
 $pdo->exec($sql);
-header("location:../login.php");
+header("location:../index.php");
 ?>

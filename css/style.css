@@ -143,12 +143,12 @@ a.now {
     box-shadow:none;
 }
 .del-msg{
-    width: 68%;
-    min-width:560px;
+    width: 65%;
+    min-width:500px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: pink;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     border-radius: 0.5rem;
     padding: 0.5rem;
     animation-name:fade;
@@ -158,21 +158,27 @@ a.now {
 }
 @keyframes fade{
     0%{
-        height:0rem;
-    }
-    10%{
-        height:3.5rem;
+        height:1.2rem;
         opacity:0;
     }
+    10%{
+        height:3rem;
+        opacity:0.5;
+    }
     20%{
+        height:3rem;
         opacity: 1;
     }
+    30%{
+        opacity: 1;
+        height:3rem;
+    }
     70%{
-        height:3.5rem;
+        height:3rem;
         opacity:1
     }
     80%{
-        height:3.5rem;
+        height:3rem;
         opacity: 0;
     }
     100%{

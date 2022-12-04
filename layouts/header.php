@@ -43,7 +43,7 @@
                     echo "</div>";
                     echo "<div>";
                     if(isset($_SESSION['login'])){
-                        echo "<a href='admin_cnter.php'>回管理中心</a>";
+                        echo "<a href='admin_center.php'>回管理中心</a>";
                         echo "<a href='logout.php'>教師登出</a>";
                     }else{
                         echo "<a href='index.php?do=reg'>教師註冊</a>";
@@ -58,7 +58,7 @@
                     echo "<a href='index.php'>回網站首頁</a>";
                     echo "</div>";
                     echo "<div>";
-                    echo "<a href='admin_center.php?do=student_list'>學生管理</a>";
+                    echo "<a href='admin_center.php?do=students_list'>學生管理</a>";
                     echo "<a href='admin_center.php?do=news'>新聞管理</a>";
                     echo "</div>";
                     echo "<div>";

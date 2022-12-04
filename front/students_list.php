@@ -274,3 +274,4 @@ if (isset($_GET['del'])) {
         ?>
         
     </div>
+    <?php include_once "layouts/class_nav.php"; ?>   

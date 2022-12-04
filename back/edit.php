@@ -1,4 +1,4 @@
-<?php include_once("api/connect.php"); ?>
+<?php include_once("db/connect.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,7 +123,7 @@
     <?php
   
     ?>
-    <a href="admin_center.php?page=1" class="back">回列表</a>
+    <a href="admin_center.php?do=students_list&page=1" class="back">回列表</a>
     <?php
     if (isset($_GET['edit'])) {
         switch ($_GET['edit']) {

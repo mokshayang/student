@@ -1,4 +1,4 @@
-<?php include_once("connect.php");
+<?php include_once("../db/connect.php");
     $sql_student="DELETE FROM `students` WHERE `id`='{$_GET['id']}'";
     // echo "$sql_student";
     //先建立變數 $student 要與 班級相連的(單筆)
@@ -9,9 +9,9 @@
     $res_class=$pdo->exec($sql_class);
 
     if(isset($_GET['code'])){
-        $url="location:../admin_center.php?page={$_GET['page']}&code={$_GET['code']}&del=已成功刪除學生{$student['name']}的所有資料！！";
+        $url="location:../admin_center.php?do=students_list&page={$_GET['page']}&code={$_GET['code']}&del=已成功刪除學生{$student['name']}的所有資料！！";
     }else{
-        $url="location:../admin_center.php?page={$_GET['page']}&del=已成功刪除學生{$student['name']}的所有資料！！";
+        $url="location:../admin_center.php?do=students_list&page={$_GET['page']}&del=已成功刪除學生{$student['name']}的所有資料！！";
     }
 header($url);
 ?>

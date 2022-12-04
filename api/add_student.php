@@ -1,4 +1,4 @@
-<?php include_once("connect.php");
+<?php include_once("../db/connect.php");
 echo "<pre>";
 print_r($_POST);
 echo "</pre>";
@@ -61,5 +61,12 @@ $sql_class = "INSERT INTO `class_student` (`school_num`, `class_code`, `seat_num
 //分別執行兩個新增的語法，如果新增成功，會回傳受影響的資料數，一個新增語法執行成功會回傳1。
 $res1 = $pdo->exec($sql);
 $res2=$pdo->exec($sql_class);
+//新增成功時:
+if($res1 && $res2){
+    $status='add_success';
+}else{
+    $status='add_fail';
+}
+header("location:../admin_center.php?do=add&status=$status");
 
-header("location:../admin_center.php");
+

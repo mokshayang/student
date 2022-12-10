@@ -1,6 +1,6 @@
 <h1>學生管理系統</h1>
     <nav>
-    <div><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
+    <div class="admin"><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
     </nav>
    
     <div class="studentsList">

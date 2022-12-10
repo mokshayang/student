@@ -7,7 +7,8 @@ include_once("db/connect.php");
 // echo "<pre>";
 // print_r($rows);
 // echo "</pre>";
-$_SESSION['login_try'] = 0;//登入錯誤次數重整
+// $_SESSION['login_try'] = 0;//登入錯誤次數重整
+// (isset($_SESSION['login_try'])&&($_SESSION['login_try']!=0))?($_SESSION['login_try']++):"";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,7 @@ $_SESSION['login_try'] = 0;//登入錯誤次數重整
             include_once "./front/main.php";
         }
     ?>
+ 
 </body>
 
 </html>

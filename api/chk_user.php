@@ -1,5 +1,5 @@
 <?php include_once("../db/connect.php");
-session_start();
+
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
 //顯查帳密是否符合db(dataBase)有的話 $chk=1
@@ -19,7 +19,7 @@ if($chk==1){
     }else{
         $_SESSION['login_try']=1;
     }
-    header("location:../login.php?error=login");
+    header("location:../index.php?do=login&error=login");
 }
 //判定是否登入成功(dbData)，成功->登入，失敗返回定帶錯誤訊息回去
 ?>

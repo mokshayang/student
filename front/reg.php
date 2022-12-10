@@ -38,7 +38,8 @@
         #seerpw {
             position: relative;
             right: 36px;
-            color: #00c;
+            text-shadow: 1px 1px 1px #666;
+            top: 2px;
             cursor: pointer;
             font-size: 20px;
         }
@@ -51,6 +52,13 @@
             position: relative;
             right: 32px;
         }
+        .blue{
+            color: #00c;
+        }
+        .grey{
+            color: #999;
+        }
+     
     </style>
 </head>
 
@@ -92,13 +100,13 @@
             <input type="text" name="acc" required autofocus>
         </label>
         <label>密　　碼 :
-            <input type="password" name="pw" required id="pw" placeholder="請輸入4字以上" onChange="censorpw()">
-            <i id="seepw" class="fa-solid fa-eye-slash"></i>
+            <input type="password" name="pw" required id="pw" placeholder=" 請輸入4字以上" onChange="censorpw()">
+            <i id="seepw" class="fa-solid fa-eye-slash grey"></i>&nbsp;
             <span id="checkpw" style="color:#f00; font-size:16px;"></span>
         </label>
         <label>確認密碼 :
             <input type="password" required onchange="rePw()" id="repw">
-            <i id="seerpw" class="fa-solid fa-eye-slash"></i>
+            <i id="seerpw" class="fa-solid fa-eye-slash grey"></i>&nbsp;
             <span id="check" style="color:#f00; font-size:16px;"></span>
         </label>
         <label>信　　箱 :
@@ -119,20 +127,20 @@
             let passtype = document.getElementById("pw");
             if (passtype.type == 'password') {
                 $('#pw').attr('type', 'text'); //inp的type切換
-                $('#seepw').removeClass().addClass('fa-solid fa-eye'); // 切換圖標
+                $('#seepw').removeClass().addClass('fa-solid fa-eye blue'); // 切換圖標
             } else {
                 $('#pw').attr('type', 'password'); //inp的type切換
-                $('#seepw').removeClass().addClass('fa-solid fa-eye-slash'); // 切換圖標
+                $('#seepw').removeClass().addClass('fa-solid fa-eye-slash grey'); // 切換圖標
             };
         });
         $('#seerpw').click(function() {
             let passtype = document.getElementById("repw");
             if (passtype.type == 'password') {
                 $('#repw').attr('type', 'text'); //inp的type切換
-                $('#seerpw').removeClass().addClass('fa-solid fa-eye'); // 切換圖標
+                $('#seerpw').removeClass().addClass('fa-solid fa-eye blue show'); // 切換圖標
             } else {
                 $('#repw').attr('type', 'password'); //inp的type切換
-                $('#seerpw').removeClass().addClass('fa-solid fa-eye-slash'); // 切換圖標
+                $('#seerpw').removeClass().addClass('fa-solid fa-eye-slash grey'); // 切換圖標
             };
         });
     </script>

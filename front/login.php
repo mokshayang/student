@@ -45,9 +45,9 @@
         echo "<div>帳號或密碼錯誤</div>";
         echo "<div>已登入嘗試" . $_SESSION['login_try'] . "次<div>";
     }
-    if( $_SESSION['login_try']>5){
-        header("location:index.php");
-    }
+    // if( $_SESSION['login_try']>5){
+    //     header("location:index.php");
+    // }
     ?>
 </body>
 

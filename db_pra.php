@@ -10,8 +10,8 @@ function dd($array){
     echo "</pre>";
 }
 
-//$rows=all('students',['name'=>'宋時雨']);//設定一個變數 = 呼叫一個自訂函式
-$rows=all('students',['dept'=>1,'graduate_at'=>1]);
+$rows=all('students',['name'=>'宋時雨']);//設定一個變數 = 呼叫一個自訂函式
+// $rows=all('students',['dept'=>1,'graduate_at'=>1]);
 dd($rows);//宋時雨 那一行的全部資料
 
 //function 的運作要了解一下

@@ -12,7 +12,7 @@ form {
     min-width: 500px;
     width: 60%;
     height: 640px;
-    margin: 30px auto;
+    margin: 5px auto;
     display: grid;
     grid-auto-rows: 42px;
     background-color: #eef;

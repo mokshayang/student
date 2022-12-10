@@ -72,6 +72,9 @@
     }
 </style>
 <h1>新聞管理</h1>
+<nav>
+    <div class="admin"><?=$_SESSION['login']['name']?> 老師  您好 !!</div>
+    </nav>
 <div class="newTool">
     <a href="admin_center.php?do=add_news" class="newAdd">新增消息</a>
     <div class="list">

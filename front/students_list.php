@@ -1,3 +1,8 @@
+<style>
+     h1{
+        margin-bottom: 10px;
+    }
+</style>
 <h1>學生管理系統</h1>
 <!-- <nav>
        

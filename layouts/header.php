@@ -35,7 +35,7 @@
             switch($local){
                 case "index":
                     echo "<div>";
-                    echo "<a href='index.php'>回首頁</a>";
+                    echo "<a href='../'>回作品集首頁 !</a>";
                     echo "</div>";
                     echo "<div>";
                     echo "<a href='index.php?do=main'>最新消息</a>";

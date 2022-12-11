@@ -37,7 +37,9 @@
         color: #f00;
         text-decoration: underline;
     }
-   
+    h1{
+        margin-bottom: 10px;
+    }
 </style>
 <h1>最新消息</h1>
 <ul>

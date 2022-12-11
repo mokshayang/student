@@ -12,7 +12,6 @@
     h3 .subject_add:hover{
         background-color: #44992298;
     }
-
     form {
         width: 68%;
         margin: 32px auto;
@@ -21,15 +20,13 @@
         margin: auto;
     }
     form .options{
-       margin: auto;
-        
+       margin: auto;   
     }
     form .option , form .subject{
         display: grid;
         grid-auto-rows: 48px;
         justify-items: center;
     }
-
     .ss {
         padding: 5px;
         border-radius: 5px;
@@ -37,13 +34,11 @@
         border: 1px solid pink;
         width: 480px;
     }
-
     label input:hover {
         border: 3px solid #bbf;
         border-radius: 6px;
     }
-    .cc{
-        
+    .cc{   
         color:#33f;
         font-weight: bold;
     }
@@ -87,14 +82,21 @@
                     <input type="text" name="opt[]" class="form-control col-10">
                 </div>` 
         */
-        //createElement
+        //createElement DOM 節點的新增
+        //透過 appendChild()、insertBefore() 或 replaceChild()
+        //將新元素加入至指定的位置之後才會顯示
         let opt = document.createElement("div");
         let label = document.createElement("label");
         let input = document.createElement('input');
         let numNode = document.createTextNode("選項" + num + " ");
-        console.log(numNode);
+        // console.log(numNode);
         //setAttribute :第一個參數是你要修改的屬性名稱，第二個是要改成的內容
-        opt.setAttribute("class", "option") //設定 opt 的 class 屬定
+        //xx.setAttribute('href','www.google.com');
+
+        opt.setAttribute("class", "option") 
+        //設定 opt 的 class 屬定 這邊一定要加 不然數字不會增加
+        //因為num 是抓取 class:option 的數量來算的
+
         input.setAttribute("class", "ss")
         label.setAttribute("class", "cc");
         // opt.setAttribute("class", "option form-group row col-12")

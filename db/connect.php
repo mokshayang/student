@@ -1,6 +1,8 @@
 <?php
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
+// $dsn="mysql:host=localhost;charset=utf8;dbname=s1110415";
+// $pdo=new PDO($dsn,'s1110415','s1110415');
 date_default_timezone_set("Asia/Taipei");
 session_start();
 function dd($array){

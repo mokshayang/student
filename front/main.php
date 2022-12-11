@@ -62,7 +62,7 @@ foreach($rows as $row){
     echo "<div class='title'>";
     echo ($row['top']==1)?"TOP&nbsp;&nbsp;":'';
     echo ($row['id']==$hot)?"HOT&nbsp;&nbsp;":'';
-    echo "<a href='index.php?do=news_detail&id={$row['id']}'>";
+    echo "<a href='./api/news_pop.php?id={$row['id']}'>";
     echo $row['subject'];
     echo "</a>";
     echo "</div>";

@@ -35,7 +35,7 @@
     }
     li a:hover{
         color: #f00;
-        text-decoration: underline;
+        
     }
     h1{
         margin-bottom: 10px;
@@ -47,7 +47,7 @@
     <div class="subject">標 題</div>
     <div class="people">人 氣</div>
 </li>
-</ul>
+
 <?php
 $all_news="SELECT * FROM `news` ORDER BY `top` DESC, `readed` DESC";
 $rows=$pdo->query($all_news)->fetchALL(PDO::FETCH_ASSOC);
@@ -59,16 +59,16 @@ $hot=$pdo->query("SELECT `id` FROM `news` ORDER BY `readed` DESC")->fetchColumn(
 
 foreach($rows as $row){
     echo "<li class='list'>";
-    echo "<div class='title'>";
-    echo ($row['top']==1)?"TOP&nbsp;&nbsp;":'';
-    echo ($row['id']==$hot)?"HOT&nbsp;&nbsp;":'';
-    echo "<a href='./api/news_pop.php?id={$row['id']}'>";
-    echo $row['subject'];
-    echo "</a>";
-    echo "</div>";
-    echo "<div>";
-    echo $row['readed'];
-    echo "</div>";
+        echo "<div class='title'>";
+            echo ($row['top']==1)?"TOP&nbsp;&nbsp;":'';
+            echo ($row['id']==$hot)?"HOT&nbsp;&nbsp;":'';
+            echo "<a href='./api/news_pop.php?id={$row['id']}'>";
+            echo $row['subject'];
+            echo "</a>";
+        echo "</div>";
+        echo "<div>";
+            echo $row['readed'];
+        echo "</div>";
     echo "</li>";
 //     echo "<pre>";
 // print_r($row);
@@ -76,3 +76,4 @@ foreach($rows as $row){
 }
 
 ?>
+</ul>

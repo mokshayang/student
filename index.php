@@ -21,7 +21,10 @@ include_once("db/connect.php");
     <?php include "./layouts/link_css.php" ?>
     <title>學生管理系統</title>
     <style>
-
+        *{
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 

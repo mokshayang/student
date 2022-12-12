@@ -11,7 +11,7 @@
     </div>
     <?php
     $surveys = all("survey_subject");
-    // dd($surveys);
+    //  dd($surveys);
     foreach ($surveys as $survey) {
     ?>
         <div class="items">

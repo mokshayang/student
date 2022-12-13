@@ -237,7 +237,7 @@ a.now {
     background-color: #f5f5ff;
 }
 .items:hover{
-    background-color: #cccccc90;
+    background-color: #dddddd90;
 }
 .items div:nth-child(1){
     justify-self: start;

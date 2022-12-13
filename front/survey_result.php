@@ -106,7 +106,7 @@ $options = all("survey_options", ["subject_id" => $_GET['id']]);
             donut: {
                 title: "調查結果",
                 width: '65',
-                padAngle: '.02'
+                padAngle: '.01'
             },
             gauge: {
                 units: '<?= $option['vote']; ?>'

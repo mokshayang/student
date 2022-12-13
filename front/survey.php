@@ -10,7 +10,12 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
     $ip = $_SERVER['REMOTE_ADDR'];
 }
 ?>
-
+<style>
+    .selected{
+        background-color: #e5e5e590;
+        color: #ccc;
+    }
+</style>
 <h3>調查列表</h3>
 <div class=add_head>
     <a href="admin_center.php?do=survey_add">新增調查主題</a>
@@ -24,26 +29,26 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
     </div>
     <?php
     $surveys = all("survey_subject", ['active' => 1]);
-    $survey_id=all("survey_subject");
     $ip_log = all("survey_log", ['ip' => $ip]);
     // dd($ip_log);
     $tmp=[];
     foreach($ip_log as $val){
         $tmp[]=$val['subject_id'];
     }
-    $result_tmp = array_unique($tmp);
-    $result=array_values($result_tmp);
-    dd($result);
-        //   dd($surveys);
+    $result_tmp = array_unique($tmp);//重複的value 刪除g
+    $result_subject=array_values($result_tmp);//重排key值
+    // dd($result);
+    // dd($surveys);
+    // dd($surveys);
         foreach ($surveys as $key => $survey) {
-            if ($result[$key] == $survey['id']) {
+            if (in_array($survey['id'],$result_subject)) {
     ?>
-                <div class="items">
+                <div class="items selected">
                     <div><?= $survey['subject'] ?></div>
-                    <div><?= $survey['vote'] ?></div>
+                    <div>已投過 !!</div>
                     <div>
-                        <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a>
-                        <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-info mx-1">結果</a>
+                       
+                        <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-success mx-1">看結果</a>
 
                     </div>
                 </div>
@@ -54,7 +59,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
                     <div><?= $survey['subject'] ?></div>
                     <div><?= $survey['vote'] ?></div>
                     <div>
-                        <!-- <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a> -->
+                        <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a>
                         <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-info mx-1">結果</a>
 
                     </div>

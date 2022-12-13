@@ -212,7 +212,7 @@ a.now {
 .table_list{
     width: 50%;
     margin: 20px auto;
-    min-width: 510px;
+    min-width: 540px;
 }
 .table_head,.items{
     display: grid;

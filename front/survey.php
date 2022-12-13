@@ -24,18 +24,45 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
     </div>
     <?php
     $surveys = all("survey_subject", ['active' => 1]);
-    //   dd($surveys);
-    foreach ($surveys as $survey) {
+    $survey_id=all("survey_subject");
+    $ip_log = all("survey_log", ['ip' => $ip]);
+    // dd($ip_log);
+    $tmp=[];
+    foreach($ip_log as $val){
+        $tmp[]=$val['subject_id'];
+    }
+    $result_tmp = array_unique($tmp);
+    $result=array_values($result_tmp);
+    dd($result);
+        //   dd($surveys);
+        foreach ($surveys as $key => $survey) {
+            if ($result[$key] == $survey['id']) {
+    ?>
+                <div class="items">
+                    <div><?= $survey['subject'] ?></div>
+                    <div><?= $survey['vote'] ?></div>
+                    <div>
+                        <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a>
+                        <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-info mx-1">結果</a>
+
+                    </div>
+                </div>
+            <?php
+            } else {                
+            ?>
+            <div class="items">
+                    <div><?= $survey['subject'] ?></div>
+                    <div><?= $survey['vote'] ?></div>
+                    <div>
+                        <!-- <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a> -->
+                        <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-info mx-1">結果</a>
+
+                    </div>
+                </div>
+    <?php
+            }
+        }
+    
 
     ?>
-        <div class="items">
-            <div><?= $survey['subject'] ?></div>
-            <div><?= $survey['vote'] ?></div>
-            <div>
-                <a href="./index.php?do=survey_item&id=<?= $survey['id'] ?>" class="btn btn-sm btn-success mx-1 ">投票</a>
-                <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-info mx-1">結果</a>
-
-            </div>
-        </div>
-    <?php }; ?>
 </div>

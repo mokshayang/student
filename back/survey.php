@@ -12,6 +12,7 @@
     <?php
     $surveys = all("survey_subject");
     //  dd($surveys);
+    
     foreach ($surveys as $survey) {
     ?>
         <div class="items">

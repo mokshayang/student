@@ -6,6 +6,7 @@ if (isset($_GET['id'])) {
 } else {
     $error = "請回到問卷首頁選擇正確的題目來進行";
 }
+// echo $_GET['ip'];
 ?>
 <style>
     form {

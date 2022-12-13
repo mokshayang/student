@@ -12,7 +12,6 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
 ?>
 <style>
     .selected{
-     
         color: #ccc;
     }
 </style>

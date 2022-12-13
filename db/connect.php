@@ -140,7 +140,7 @@ function update($table,$col,...$args){
             $tmp=[];//因用與上方相同名稱，所以要清空。
             foreach($args[0] as $key => $value){
                 $tmp[]="`$key`='$value'";
-                dd($tmp);
+                // dd($tmp);
             }
             $sql=$sql . " WHERE " . join(" && ",$tmp);
             // dd($sql);
@@ -148,7 +148,7 @@ function update($table,$col,...$args){
             $sql .= " WHERE `id` ='{$args[0]}'" ; 
         }
     }
-    echo $sql;
+    // echo $sql;
     return $pdo->exec($sql);
 }
 // update('students',['name'=>'劉勤永','dept'=>'2','graduate_at'=>'3']);

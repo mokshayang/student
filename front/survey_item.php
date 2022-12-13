@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
         grid-template-columns: 3fr 1fr 6fr 3fr;
         justify-items: end;
     }
+  
     .radio {
         width: 38px;
         height: 38px;

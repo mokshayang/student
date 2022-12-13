@@ -29,11 +29,11 @@ if (!empty($_SERVER['HTTP_CLIENT_IP']))//check ip from share internet
     {
       $ip=$_SERVER['REMOTE_ADDR'];
     }
-    echo $_SERVER['HTTP_CLIENT_IP'];//client ip 可造假
-    echo "<br>";
-    echo $_SERVER['HTTP_X_FORWARDED_FOR'];//代理伺服器的 ip 可造假
-    echo "<br>";
-    echo $_SERVER['REMOTE_ADDR'];//
+    // echo $_SERVER['HTTP_CLIENT_IP'];//client ip 可造假
+    // echo "<br>";
+    // echo $_SERVER['HTTP_X_FORWARDED_FOR'];//代理伺服器的 ip 可造假
+    // echo "<br>";
+    // echo $_SERVER['REMOTE_ADDR'];//
 
 $log=[
     'user'=>(isset($_SESSION['login']))?$_SESSION['login']['id']:0,
@@ -43,6 +43,6 @@ $log=[
 ];
 insert("survey_log",$log);
 // dd($log);
-// to("../index.php?do=survey_result&id={$subject['id']}");
+to("../index.php?do=survey_result&id={$subject['id']}");
 
 ?>

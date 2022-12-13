@@ -236,9 +236,7 @@ a.now {
 .items:nth-child(2n){
     background-color: #f5f5ff;
 }
-.items:hover{
-    background-color: #dddddd90;
-}
+
 .items div:nth-child(1){
     justify-self: start;
     padding-left: 20px;

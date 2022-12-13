@@ -9,7 +9,7 @@
     .group{
         justify-items: center;
         font-size: 24px;
-        background-color: #333;
+        background-color: #33e;
         height: 48px;
         color: #eee;
         border-radius: 15px 15px 0 0;
@@ -19,7 +19,7 @@
         font-size: 20px;
     }
     .list:nth-child(2n+1){
-        background-color: #eef;
+        background-color: #f5f5ff;
     }
     li div:nth-child(1){
         padding-left:20px ;

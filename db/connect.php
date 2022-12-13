@@ -257,7 +257,7 @@ function del($table,$id){
 // 萬用查詢 :
 function q($sql){
     global $pdo;
-    echo $sql;
+    // echo $sql;
     return $pdo->query($sql)->fetchAll();    
 }
 // $sql="select * from `students` where `dept`='2'";

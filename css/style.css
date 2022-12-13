@@ -226,14 +226,15 @@ a.now {
     font-size: 18px;
     font-weight: bold;
     padding-top: 6px;
-    background-color: #99e;
+    background-color: #33e;
     border-radius: 10px 10px 0 0;
+    color: #eee;
 }
 .items {
     box-sizing:  1px 1px 1px 1px #000;
 }
 .items:nth-child(2n){
-    background-color: #fdd;
+    background-color: #f5f5ff;
 }
 .items div:nth-child(1){
     justify-self: start;

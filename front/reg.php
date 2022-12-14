@@ -88,7 +88,7 @@
     }else{
         $_SESSION['login_reg_url']=$_SESSION['login_url'];
     }
-    // echo $_SESSION['login_reg_url'];
+    echo $_SESSION['login_reg_url'];
     ?>
     <script>
         function censorpw() { //檢查密碼長度

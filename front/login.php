@@ -62,7 +62,7 @@
         //這裡決定了(login)，當前一頁面放入變數，
         //再由input:hidden到api/chk_user.php
         $url= $_SESSION['login_url'];
-        // echo $url;
+        echo $url;
     ?>
     <h1>教師登入</h1>
     <form action="api/chk_user.php" method="post" autocomplete="off">

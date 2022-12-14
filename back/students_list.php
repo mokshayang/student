@@ -76,7 +76,7 @@
                     $url_amend="<a href=admin_center.php?do=edit&id={$row['id']}&page={$now}>修改</a>";
                 }
       
-                $age = round((strtotime('now') - strtotime($row['birthday'])) / (60 * 60 * 24 * 365), 1);
+                $age = round((strtotime('now') - strtotime($row['birthday'])) / (60 * 60 * 24 * 365), 0);
                 echo "<div class='studentDate'>";
                 echo    "<div>{$row['school_num']}</div>";
                 echo    "<div>{$row['name']}</div>";

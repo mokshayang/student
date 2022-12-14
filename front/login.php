@@ -37,7 +37,7 @@
     <form action="api/chk_user.php" method="post">
         <label style='height: 20px;'></label>
         <label>帳號 : <input type="text" name="acc"></label>
-        <label>密碼 : <input type="text" name="pw"></label>
+        <label>密碼 : <input type="password" name="pw"></label>
         <input type="submit" value="登入">
     </form>
     <?php

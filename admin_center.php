@@ -8,6 +8,10 @@ include_once("db/connect.php");
 // print_r($rows);
 // echo "</pre>";
 
+//$_SERVER['HTTP_REFERER']會成功都是下方判斷式
+//以及logout.php裡的 unset($_SESSION['login']);
+//還有header("location:".$_SERVER['HTTP_REFERER']);
+//這三個造成的
 if (!isset($_SESSION['login'])) {
     header("location:index.php");
     exit();

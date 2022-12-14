@@ -75,13 +75,13 @@
     // echo "<br>";
     // dd($f);
     // 本地路徑----------------------
-    // $regUrl="http://localhost/student/index.php?do=reg";
-    // $regLogin="http://localhost/student/index.php?do=login";
-    // $error="http://localhost/student/index.php?do=login&error=login";
+    $regUrl="http://localhost/student/index.php?do=reg";
+    $regLogin="http://localhost/student/index.php?do=login";
+    $error="http://localhost/student/index.php?do=login&error=login";
     // 老師的路徑--------------------
-    $regUrl="http://220.128.133.15/s1110415/school/index.php?do=reg";
-    $regLogin="http://220.128.133.15/s1110415/school/index.php?do=login";
-    $error="http://220.128.133.15/s1110415/school/index.php?do=login&error=login";
+    // $regUrl="http://220.128.133.15/s1110415/school/index.php?do=reg";
+    // $regLogin="http://220.128.133.15/s1110415/school/index.php?do=login";
+    // $error="http://220.128.133.15/s1110415/school/index.php?do=login&error=login";
 
     if($_SERVER['HTTP_REFERER'] !=$regUrl && $_SERVER['HTTP_REFERER']!=$regLogin && $_SERVER['HTTP_REFERER']!=$error){
     $_SESSION['login_reg_url'] = $_SERVER['HTTP_REFERER'];

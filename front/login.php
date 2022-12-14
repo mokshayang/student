@@ -30,15 +30,32 @@
 
 <body>
     <?php
+    $regUrl="http://localhost/student/index.php?do=reg";
+    $regLogin="http://localhost/student/index.php?do=login";
+    $error="http://localhost/student/index.php?do=login&error=login";
+    if($_SERVER['HTTP_REFERER'] !=$regUrl && $_SERVER['HTTP_REFERER']!=$regLogin && $_SERVER['HTTP_REFERER']!=$error){
+            $_SESSION['login_url'] = $_SERVER['HTTP_REFERER'];
+        }elseif(isset($_SESSION['login_reg_url'])){
+            $_SESSION['login_url']=$_SESSION['login_reg_url'];
+        }
+        $url= $_SESSION['login_url'];
+
+        // echo $_SESSION['login_url'];
+
+        
+    // array_push($url,$_SERVER['HTTP_REFERER']);
+    echo $url;
+    echo "<br>";
     
-    
+   
     ?>
     <h1>教師登入</h1>
-    <form action="api/chk_user.php" method="post">
+    <form action="api/chk_user.php" method="post" autocomplete="off">
         <label style='height: 20px;'></label>
         <label>帳號 : <input type="text" name="acc"></label>
         <label>密碼 : <input type="password" name="pw"></label>
         <input type="submit" value="登入">
+        <input type="hidden" name="url" value="<?=$url?>">
     </form>
     <?php
     if (isset($_GET['error'])) {

@@ -16,5 +16,5 @@ echo "<br>";
 echo "email=>".$email;
 echo "<br>";
 $pdo->exec($sql);
-header("location:../index.php");
+header("location:../index.php?do=login");
 ?>

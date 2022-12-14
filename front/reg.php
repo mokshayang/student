@@ -63,6 +63,17 @@
 </head>
 
 <body>
+    <?php
+    $regUrl="http://localhost/student/index.php?do=reg";
+    $regLogin="http://localhost/student/index.php?do=login";
+    $error="http://localhost/student/index.php?do=login&error=login";
+    if($_SERVER['HTTP_REFERER'] !=$regUrl && $_SERVER['HTTP_REFERER']!=$regLogin && $_SERVER['HTTP_REFERER']!=$error){
+    $_SESSION['login_reg_url'] = $_SERVER['HTTP_REFERER'];
+    }else{
+        $_SESSION['login_reg_url']=$_SESSION['login_url'];
+    }
+    echo $_SESSION['login_reg_url'];
+    ?>
     <script>
         function censorpw() { //檢查密碼長度
             let check = false;

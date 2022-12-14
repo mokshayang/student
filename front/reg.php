@@ -69,15 +69,26 @@
     //登入時的當前頁面$regLogin
     //錯誤時的轉跳頁面$error
     //註冊頁面也先記錄
-    $regUrl="http://localhost/student/index.php?do=reg";
-    $regLogin="http://localhost/student/index.php?do=login";
-    $error="http://localhost/student/index.php?do=login&error=login";
+    // $file=explode("/",$_SERVER['HTTP_REFERER']);
+    // $f=array_pop($file);
+    // dd($file);
+    // echo "<br>";
+    // dd($f);
+    // 本地路徑----------------------
+    // $regUrl="http://localhost/student/index.php?do=reg";
+    // $regLogin="http://localhost/student/index.php?do=login";
+    // $error="http://localhost/student/index.php?do=login&error=login";
+    // 老師的路徑--------------------
+    $regUrl="http://220.128.133.15/s1110415/school/index.php?do=reg";
+    $regLogin="http://220.128.133.15/s1110415/school/index.php?do=login";
+    $error="http://220.128.133.15/s1110415/school/index.php?do=login&error=login";
+
     if($_SERVER['HTTP_REFERER'] !=$regUrl && $_SERVER['HTTP_REFERER']!=$regLogin && $_SERVER['HTTP_REFERER']!=$error){
     $_SESSION['login_reg_url'] = $_SERVER['HTTP_REFERER'];
     }else{
         $_SESSION['login_reg_url']=$_SESSION['login_url'];
     }
-    //echo $_SESSION['login_reg_url'];
+    // echo $_SESSION['login_reg_url'];
     ?>
     <script>
         function censorpw() { //檢查密碼長度

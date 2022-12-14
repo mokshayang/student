@@ -30,6 +30,13 @@
 
 <body>
     <?php
+    //$_SERVER['HTTP_REFERER']
+    //註冊時的當前頁面$regUrl
+    //登入時的當前頁面$regLogin
+    //錯誤時的轉跳頁面$error
+    //當入錯誤時api/chk_user.phpdo?=login&error=login 
+    //此時，轉到註冊頁面時 如果沒有下方判斷!=$error
+    //會導致登入時，無法轉調頁面。
     $regUrl="http://localhost/student/index.php?do=reg";
     $regLogin="http://localhost/student/index.php?do=login";
     $error="http://localhost/student/index.php?do=login&error=login";
@@ -38,16 +45,10 @@
         }elseif(isset($_SESSION['login_reg_url'])){
             $_SESSION['login_url']=$_SESSION['login_reg_url'];
         }
+        //這裡決定了(login)，當前一頁面放入變數，
+        //再由input:hidden到api/chk_user.php
         $url= $_SESSION['login_url'];
-
-        // echo $_SESSION['login_url'];
-
-        
-    // array_push($url,$_SERVER['HTTP_REFERER']);
-    echo $url;
-    echo "<br>";
-    
-   
+        // echo $url;
     ?>
     <h1>教師登入</h1>
     <form action="api/chk_user.php" method="post" autocomplete="off">

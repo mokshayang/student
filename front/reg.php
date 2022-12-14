@@ -64,6 +64,11 @@
 
 <body>
     <?php
+    //$_SERVER['HTTP_REFERER']，記錄前一頁
+    //註冊時的當前頁面$regUrl
+    //登入時的當前頁面$regLogin
+    //錯誤時的轉跳頁面$error
+    //註冊頁面也先記錄
     $regUrl="http://localhost/student/index.php?do=reg";
     $regLogin="http://localhost/student/index.php?do=login";
     $error="http://localhost/student/index.php?do=login&error=login";
@@ -72,7 +77,7 @@
     }else{
         $_SESSION['login_reg_url']=$_SESSION['login_url'];
     }
-    echo $_SESSION['login_reg_url'];
+    //echo $_SESSION['login_reg_url'];
     ?>
     <script>
         function censorpw() { //檢查密碼長度

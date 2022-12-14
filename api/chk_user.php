@@ -2,7 +2,7 @@
 
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
-$url=$_POST['url'];
+$url=$_POST['url'];//回到當前頁面的路徑//使用者體驗
 //顯查帳密是否符合db(dataBase)有的話 $chk=1
 //$chk=1 表是有符合的資料
 $sql="SELECT count(`id`) FROM `users` 
@@ -14,7 +14,7 @@ if($chk==1){
     $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     $_SESSION['login']=$user;
     // header("location:../admin_center.php");
-    header("location:".$url);
+    header("location:".$url);//如果成功，回到之前的頁面
 }else{
     if(isset($_SESSION['login_try'])){
         $_SESSION['login_try']++;
@@ -22,7 +22,6 @@ if($chk==1){
         $_SESSION['login_try']=1;
     }
     header("location:../index.php?do=login&error=login");
-    // header("location:".$_SESSION['login_url']);
 }
 //判定是否登入成功(dbData)，成功->登入，失敗返回定帶錯誤訊息回去
 ?>

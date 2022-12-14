@@ -39,7 +39,7 @@
             position: relative;
             right: 36px;
             text-shadow: 1px 1px 1px #666;
-            top: 2px;
+            top: 1px;
             cursor: pointer;
             font-size: 20px;
         }

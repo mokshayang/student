@@ -86,10 +86,12 @@ $options = all("survey_options", ["subject_id" => $_GET['id']]);
 
     //抓DOM
     const columns = document.querySelectorAll(".voted-result")
+    // console.log(columns);
     let voteData = {};
     columns.forEach((item) => {
         voteData[item.textContent] = item.dataset.vote;
     })
+    // console.log(voteData);
     //套圖表
     c3Chart(voteData);
 

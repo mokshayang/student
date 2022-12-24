@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
 } else {
     to("./admin_center.php?do=survey&error=請指定項目編輯");
 }
+
 ?>
 <style>
     .add {
@@ -22,14 +23,13 @@ if (isset($_GET['id'])) {
         border-radius: 10px;
     } */
 </style>
-<h3>編輯調查 <button id="optionAdd" class="btn btn-outline-success btn-sm add">+</button></h3>
+<h3>編輯調查 <button id="optionAdd" class="btn btn-outline-success btn-sm add" data-toggle="tooltip" data-placement="top" title="增加選項">+</button></h3>
 
 <form action="./api/survey_edit.php" method="post" class="col-5 mx-auto  flex-wrap justify-content-center">
     <div class="input-group mb-3">
-        <label class=" input-group-text ">&nbsp; 主題 : &nbsp; </label>
+        <label class=" input-group-text ">&nbsp; 主 題 : &nbsp; </label>
         <input type="text" name="subject" value="<?= $subject['subject'] ?>" class="form-control ">
         <input type="hidden" name="subject_id" value="<?= $subject['id'] ?>">
-
     </div>
     <div>
         <!-- 選項區 -->
@@ -37,9 +37,9 @@ if (isset($_GET['id'])) {
         foreach ($options as $idx => $option) {
         ?>
             <div class="input-group mb-3 col-10" id="options">
-                <label class=" input-group-text ">項目 : <?= $idx + 1; ?>&nbsp; </label>
+                <label class=" input-group-text ">選項 : <span><?= $idx + 1; ?></span> </label>
                 <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control ">
-                <a href="./api/survey.option_del.php?id=<?= $option['id'] ?>" class="btn btn-outline-success" role="button" style='border-radius:4px;'>-</a>
+                <a href="./api/survey_option_del.php?id=<?= $option['id'] ?>" class="btn btn-outline-secondary" role="button" style='border-radius:4px;'>-</a>
                 <input type="hidden" name="opt_id[]" value="<?= $option['id'] ?>">
             </div>
         <?php
@@ -51,48 +51,29 @@ if (isset($_GET['id'])) {
         <input class="btn btn-primary mx-1" type="submit" value="修改">
     </div>
 </form>
-<div id="d1" class="ca">
-    <div id="dd1" class="cc1">1</div>
-    <div id="dd2" class="cc2">2</div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<?php include "./layouts/scripts.php";?>
 <script>
+    //  $('[data-toggle="tooltip"]').tooltip();
+
     $(function() {
-        const optionAdd = $('#optionAdd');//button
-        console.log(optionAdd);
-        optionAdd.click(function() {
-            const options = $('#options');//div optionsArea
-            const div = "<div class='input-group mb-3 col-10 addDiv' >";//addDiv
-            const addDiv = $('.addDiv');
-            // console.log(addDiv.length);
-            //test :
-            const test = $('label');
-            console.log(addDiv.length);
-
-            // console.log(addDiv.length);
-            const labelTheme = "<label class='input-group-text'>項目 : 2</label>";
-            const input = "<input type='text' name='opt[]' class='form-control '>";
-           
-            options.parent().append(div).addDiv.append(labelTheme,input);
-            
-            
-            // console.log(options.parent());
-            // addDiv.append(labelTheme,input);
-           
-            
-
-
-
-
-
-
-
-
+        const optionAdd = $('#optionAdd'); //button
+        optionAdd.on('click',function() {
+            const options = $('#options'); //div optionsArea
+            const addDiv = $('.addDiv'); //count options number
+            const num= $('label').length;
+            console.log(num);
+            const div = "<div class='input-group mb-3 col-10 addDiv'><label class='input-group-text'>選項 :&nbsp;<span>" + (num) + "</span></label><input type='text' name='opt[]' class='form-control '><div class='remove btn btn-outline-warning' role='button'>-</div></div>"; //addDiv Html
+            options.parent().append(div);
+            $('.remove').on('click',function() {
+                $(this).parent().remove();
+                $('span').each(function(e) {
+                    $('span').eq(e).text(e +1 );
+                })
+                // console.log($('span').eq(0));
+            })
         })
-      
-
-
 
     })
 </script>

@@ -34,7 +34,7 @@
     //註冊時的當前頁面$regUrl
     //登入時的當前頁面$regLogin
     //錯誤時的轉跳頁面$error
-    //當入錯誤時api/chk_user.phpdo?=login&error=login 
+    //當入錯誤時api/chk_user.phpdo?=login&error=login g
     //此時，轉到註冊頁面時 如果沒有下方判斷!=$error
     //會導致登入時，無法轉調頁面。
     // 本地路徑----------------------

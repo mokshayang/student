@@ -37,16 +37,16 @@ if (isset($_GET['id'])) {
         foreach ($options as $idx => $option) {
             if($idx==0){
         ?>
-            <div class="input-group mb-3 col-10" id="options">
+            <div class="input-group mb-3 col-8" id="options">
                 <label class=" input-group-text ">選項 :&nbsp;<span><?= $idx + 1; ?></span></label>
                 <!-- 將選項內容裝入array->opt[] -->
-                <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control ">
-                <a href="#" class="btn btn-primary" role="button" style='border-radius:4px;'>-</a>
+                <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control">
+                <a href="#" class="btn btn-primary" role="button" style='border-radius:4px;width:33.14px;'></a>
                 <!-- 將survey_options id 內容裝入array->opt_id[] -->
                 <input type="hidden" name="opt_id[]" value="<?= $option['id'] ?>">
             </div>
             <?php }else{ ?>
-                <div class="input-group mb-3 col-10" id="options">
+                <div class="input-group mb-3 col-8" id="options">
                 <label class=" input-group-text ">選項 :&nbsp;<span><?= $idx + 1; ?></span></label>
                 <!-- 將選項內容裝入array->opt[] -->
                 <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control ">
@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
             $('.remove').on('click',function() {
                 $(this).parent().remove();
                 $('span').each(function(e) {
-                    $('span').eq(e).text(e +1 );
+                    $('span').eq(e).text(e +1);
                 })
                 // console.log($('span').eq(0));
             })

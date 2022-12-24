@@ -43,3 +43,7 @@ $news = $pdo->query($sql)->fetch();
     <div class="type">[ <?= $news['type']  ?> ] : </div>
     <div class="content"><?= nl2br($news['content']) ?></div>
 </div>
+<div class="text-center mt-4">
+    <a href="index.php?do=main" class="btn btn-warning mx-1">返回</a>
+</div>
+<br><br>

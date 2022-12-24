@@ -48,9 +48,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) //check ip from share internet
                 <div><?= $survey['subject'] ?></div>
                 <div>已投過 !!</div>
                 <div>
-
                     <a href="index.php?do=survey_result&id=<?= $survey['id']; ?>" class="btn btn-sm btn-outline-secondary mx-1">看結果</a>
-
                 </div>
             </div>
         <?php

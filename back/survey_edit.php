@@ -35,14 +35,27 @@ if (isset($_GET['id'])) {
         <!-- 選項區 -->
         <?php
         foreach ($options as $idx => $option) {
+            if($idx==0){
         ?>
             <div class="input-group mb-3 col-10" id="options">
-                <label class=" input-group-text ">選項 : <span><?= $idx + 1; ?></span> </label>
+                <label class=" input-group-text ">選項 :&nbsp;<span><?= $idx + 1; ?></span></label>
+                <!-- 將選項內容裝入array->opt[] -->
+                <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control ">
+                <a href="#" class="btn btn-primary" role="button" style='border-radius:4px;'>-</a>
+                <!-- 將survey_options id 內容裝入array->opt_id[] -->
+                <input type="hidden" name="opt_id[]" value="<?= $option['id'] ?>">
+            </div>
+            <?php }else{ ?>
+                <div class="input-group mb-3 col-10" id="options">
+                <label class=" input-group-text ">選項 :&nbsp;<span><?= $idx + 1; ?></span></label>
+                <!-- 將選項內容裝入array->opt[] -->
                 <input type="text" name="opt[]" value="<?= $option['opt'] ?>" class="form-control ">
                 <a href="./api/survey_option_del.php?id=<?= $option['id'] ?>" class="btn btn-outline-secondary" role="button" style='border-radius:4px;'>-</a>
+                <!-- 將survey_options id 內容裝入array->opt_id[] -->
                 <input type="hidden" name="opt_id[]" value="<?= $option['id'] ?>">
             </div>
         <?php
+            }
         }
         ?>
     </div>
@@ -64,7 +77,7 @@ if (isset($_GET['id'])) {
             const addDiv = $('.addDiv'); //count options number
             const num= $('label').length;
             console.log(num);
-            const div = "<div class='input-group mb-3 col-10 addDiv'><label class='input-group-text'>選項 :&nbsp;<span>" + (num) + "</span></label><input type='text' name='opt[]' class='form-control '><div class='remove btn btn-outline-warning' role='button'>-</div></div>"; //addDiv Html
+            const div = "<div class='input-group mb-3 col-10 addDiv'><label class='input-group-text'>選項 :&nbsp;<span>" + (num) + "</span></label><input type='text' name='optn[]' class='form-control '><div class='remove btn btn-outline-warning' role='button'>-</div></div>"; //addDiv Html
             options.parent().append(div);
             $('.remove').on('click',function() {
                 $(this).parent().remove();

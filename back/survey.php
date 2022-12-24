@@ -30,3 +30,18 @@
         </div>
     <?php }; ?>
 </div>
+<style>
+    .err{
+        text-align: center;
+        margin: 40px auto;
+        color: red;
+        font-weight: bold;
+        font-size: 20px;
+    }
+</style>
+<?php
+(isset($_GET['error']))?$_GET['error']:$_GET['error']='';
+echo "<div class=err>";
+echo $_GET['error'];
+echo "</div>";
+?>

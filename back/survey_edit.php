@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
     //  $('[data-toggle="tooltip"]').tooltip();
 
     $(function() {
-        const optionAdd = $('#optionAdd'); //button
+        const optionAdd = $('# '); //button
         optionAdd.on('click',function() {
             const options = $('#options'); //div optionsArea
             const addDiv = $('.addDiv'); //count options number

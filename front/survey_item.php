@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
         grid-template-columns: 3fr 1fr 6fr 3fr;
         justify-items: end;
     }
-  
+
     .radio {
         width: 38px;
         height: 38px;
@@ -29,6 +29,7 @@ if (isset($_GET['id'])) {
         text-align: center;
         line-height: 38px;
     }
+
     @media only screen and (max-width: 780px) {
         form {
             width: 90%;
@@ -43,31 +44,18 @@ if (isset($_GET['id'])) {
             echo "<span style='color:red'>" . $error . "</span>";
         } else {
             foreach ($options as $key => $option) {
-                if($key==0){
+                $checked = ($key == 0) ? "checked" : "";
         ?>
                 <!-- 項目列表 -->
                 <div></div>
                 <div class="radio">
-                    <input type="radio" name="option" checked value="<?= $option['id'] ?>">
+                    <input type="radio" name="option" <?= $checked ?> value="<?= $option['id'] ?>">
                 </div>
                 <div class="form-control">
                     <?= $option['opt']; ?>
                 </div>
                 <div></div>
         <?php
-                }else{
-        ?>
-            <!-- 項目列表 -->
-            <div></div>
-                <div class="radio">
-                    <input type="radio" name="option"  value="<?= $option['id'] ?>">
-                </div>
-                <div class="form-control">
-                    <?= $option['opt']; ?>
-                </div>
-                <div></div>
-        <?php
-                }
             }
         }
         ?>
